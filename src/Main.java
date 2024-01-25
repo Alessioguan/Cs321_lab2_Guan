@@ -7,6 +7,8 @@ public class Main {
         int[] arr1D2 = {1,3,5,7};
         int[][] arr2D1={{1,2},{3,2},{5,6},{7,8}};
         int[][] arr2D2={{1,2,3},{3,4,5}};
+        int[][] Matrix1={{1,2},{4,1}};
+        int[][] Matrix2={{2,2},{2,2}};
         displayArray(arr1D1);
         displayArray(arr1D2);
         Q3display2DArray(arr2D1);
@@ -15,7 +17,7 @@ public class Main {
         System.out.println(check2DArrayEqual(arr2D1,arr2D2));
         System.out.println(sum1Darray(arr1D1));
         System.out.println(sum2Darray(arr2D1));
-        display2DArray(multipy2Matrices(arr2D1,arr2D2));
+        display2DArray(multipy2Matrices(Matrix1,Matrix2));
 
 
     }
@@ -120,46 +122,23 @@ public class Main {
 
     ///Q8 Multiply two matrices
     public static int[][] multipy2Matrices(int[][] array1,int[][] array2) {
-        System.out.println("Q8 multiplication of 2 matrices is :");
+        System.out.println("Q8 first matrices are :");
+        display2DArray(array1);
+        System.out.println("Second matrices are :");
+        display2DArray(array2);
         int[][] multipied2Darray = new int[array1.length][array2[1].length];
-        if(!checkMatrix(array1) || !checkMatrix(array2)){
-            return null;
-        }
-        else if(array1[1].length != array2.length){
-            System.out.println("Two Matrix cannot Multiply");
-            return null;
-        }
-        else{
-            for(int i=0; i<array1.length; i++){
-                for(int j=0; j<array1[i].length; j++){
-                    for(int k=0; k<array2[j].length; k++){
-                        multipied2Darray[i][k] += array1[i][j] * array2[j][k];
-                    }
+
+        for(int i=0; i<array1.length; i++){
+            for(int j=0; j<array1[i].length; j++){
+                for(int k=0; k<array2[j].length; k++){
+                    multipied2Darray[i][k] += array1[i][j] * array2[j][k];
                 }
             }
-
         }
+        System.out.println("the multiplication of 2 matrices are :");
+
         return multipied2Darray;
     }
-
-    public static boolean checkMatrix(int[][] array){
-        int rowlength = array[1].length;
-        for(int i=0; i<array.length; i++)
-        {
-            if(array[i].length != rowlength)
-            {
-                System.out.println("follow array are not matrix");
-                display2DArray(array);
-                return false;
-            }
-
-        }
-        return true;
-    }
-
-
-
-
 
 
 }
